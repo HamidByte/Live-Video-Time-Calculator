@@ -4,45 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Video Time Calculator</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Live Video Time Calculator</h1>
-    <p>Enter the total duration of the video and the reverse time shown during the live stream.</p>
+    <div class="container">
+        <h1>Live Video Time Calculator</h1>
+        <p>Enter the total duration of the video and the reverse time shown during the live stream.</p>
 
-    <label for="totalDuration">Total Duration (HH:MM):</label>
-    <input type="text" id="totalDuration" placeholder="e.g., 01:12"><br><br>
+        <label for="totalDuration">Total Duration (HH:MM):</label>
+        <input type="text" id="totalDuration" placeholder="e.g., 01:12"><br><br>
 
-    <label for="reverseTime">Reverse Time Shown (MM:SS):</label>
-    <input type="text" id="reverseTime" placeholder="e.g., 30:00"><br><br>
+        <label for="reverseTime">Reverse Time Shown (MM:SS):</label>
+        <input type="text" id="reverseTime" placeholder="e.g., 30:00"><br><br>
 
-    <button onclick="calculateActualTime()">Calculate Actual Time</button>
+        <button onclick="calculateActualTime()">Calculate Actual Time</button>
 
-    <h2>Actual Time in Video: <span id="result"></span></h2>
+        <h2>Actual Time in Video: <span id="result"></span></h2>
+    </div>
 
-    <script>
-        function calculateActualTime() {
-            const totalDurationInput = document.getElementById('totalDuration').value;
-            const reverseTimeInput = document.getElementById('reverseTime').value;
-
-            // Parse total duration
-            const totalDurationParts = totalDurationInput.split(':');
-            const totalDurationMinutes = parseInt(totalDurationParts[0]) * 60 + parseInt(totalDurationParts[1]);
-
-            // Parse reverse time
-            const reverseTimeParts = reverseTimeInput.split(':');
-            const reverseMinutes = parseInt(reverseTimeParts[0]) * 60 + parseInt(reverseTimeParts[1]);
-
-            // Calculate actual time
-            const actualTimeMinutes = totalDurationMinutes - reverseMinutes;
-
-            // Convert back to HH:MM:SS format
-            const hours = Math.floor(actualTimeMinutes / 60);
-            const minutes = actualTimeMinutes % 60;
-            const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
-
-            // Display result
-            document.getElementById('result').textContent = formattedTime;
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
