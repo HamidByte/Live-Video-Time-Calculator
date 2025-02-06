@@ -1,22 +1,63 @@
-# Live Video Time Calculator
+# Convertly
 
-This is a simple web application to calculate the actual time in a live YouTube video that displays time in reverse during the stream.
+Convertly is a versatile app offering quick and easy conversions for units, time, currency, dates, and more. Simple to use now, with room to grow into a powerful tool for larger conversions in the future.
 
-## Features
+## Setup
 
-- Input total video duration and reverse time shown during the live stream.
-- Calculate the actual time in the video for later reference.
-- Displays the calculated time in `HH:MM` format.
+1. **Clone the repository:**
 
-## Usage
+```sh
+git clone https://github.com/HamidByte/Convertly.git
+```
 
-1. Open the HTML file in a web browser.
-2. Enter the total duration of the video in `HH:MM` format.
-3. Enter the reverse time shown in `MM:SS` format.
-4. Click the "Calculate Actual Time" button to get the actual time in the video.
+2. **Navigate to the project directory:**
 
-## Example
+```sh
+cd Convertly
+```
 
-- Total Duration: `01:12`
-- Reverse Time: `30:00`
-- Calculated Time: `00:42`
+3. **Install dependencies:**
+
+```sh
+npm install
+```
+
+4. **Start the development server:**
+
+```sh
+npm run dev
+```
+
+5. **Build for production:**
+
+```sh
+npm run build
+```
+
+6. **Run unit tests:**
+
+```sh
+npm run test:unit
+```
+
+7. **Lint and fix code:**
+
+```sh
+npm run lint
+```
+
+## Upcoming Conversion Categories
+
+- **Units:** Length, weight, temperature, speed, volume, area, energy, pressure
+- **Dates:** Age calculator, days between dates, week number, leap year checker
+- **Time:** Time zone conversion, durations, timestamps, stopwatch to hours/minutes, live video time, epoch to human-readable date
+- **Currency:** Live exchange rates, historical conversions, cryptocurrency to fiat
+- **Math:** Fractions to decimals, Roman numerals, percentage calculator
+- **Text:** Uppercase/lowercase, ASCII to text, character count
+- **Digital Storage:** KB to MB, GB to TB, bits to bytes
+- **Finance:** Loan interest, tax calculator, inflation adjustment
+- **Science:** Atomic mass, wavelength to frequency, radiation units
+- **Engineering:** Torque, power, viscosity, thermal conductivity
+- **Health & Fitness:** BMI calculator, calorie burn, steps to distance
+- **Geography:** GPS coordinates, latitude/longitude distance, country codes
+- **Miscellaneous:** Shoe size conversion, cooking measurements, dice roll probability

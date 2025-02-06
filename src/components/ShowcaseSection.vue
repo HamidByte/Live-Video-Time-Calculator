@@ -1,0 +1,37 @@
+<script setup>
+import { convertersList } from '@/lib/converters'
+</script>
+
+<template>
+  <section class="w-full py-6 md:py-12 lg:py-16 bg-gray-100 dark:bg-gray-800">
+    <div class="container px-4 md:px-6">
+      <div
+        class="flex flex-col items-center justify-center space-y-4 text-center"
+      >
+        <div
+          class="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3"
+        >
+          <div
+            class="card sm:max-w-sm"
+            v-for="(converter, index) in convertersList"
+          >
+            <div class="card-body">
+              <h5 class="card-title mb-0">{{ converter.title }}</h5>
+              <div class="text-base-content/50 mb-6">
+                {{ converter.description }}
+              </div>
+              <p class="mb-4">
+                Explore a range of features and services designed to enhance
+                your experience. Join us and make the most out of what we have
+                to offer.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <button class="btn btn-primary" :href="converter.href">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
