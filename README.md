@@ -1,19 +1,19 @@
-# Convertly
+# Convertica
 
-Convertly is a versatile app offering quick and easy conversions for units, time, currency, dates, and more. Simple to use now, with room to grow into a powerful tool for larger conversions in the future.
+Convertica is a versatile app offering quick and easy conversions for units, time, currency, dates, and more. Simple to use now, with room to grow into a powerful tool for larger conversions in the future.
 
 ## Setup
 
 1. **Clone the repository:**
 
 ```sh
-git clone https://github.com/HamidByte/Convertly.git
+git clone https://github.com/HamidByte/convertica.git
 ```
 
 2. **Navigate to the project directory:**
 
 ```sh
-cd Convertly
+cd convertica
 ```
 
 3. **Install dependencies:**
