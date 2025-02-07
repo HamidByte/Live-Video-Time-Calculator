@@ -58,7 +58,7 @@ watch(searchTerm, (newTerm) => {
             <RouterLink
               v-for="result in results"
               :key="result.name"
-              :to="result.href"
+              :to="result.isDisabled ? '#' : result.href"
             >
               <div
                 class="flex cursor-pointer items-center rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"

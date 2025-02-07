@@ -1,16 +1,9 @@
 <script setup>
-import NavBar from '@/components/NavBar.vue'
-import Footer from '@/components/Footer.vue'
+import ContentLayout from '@/components/ContentLayout.vue'
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen mx-auto max-w-screen-xl">
-    <NavBar />
-
+  <ContentLayout>
     <RouterView />
-
-    <Footer />
-  </div>
+  </ContentLayout>
 </template>
-
-<style scoped></style>

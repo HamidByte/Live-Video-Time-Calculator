@@ -3,7 +3,7 @@ import { convertersList } from '@/lib/converters'
 </script>
 
 <template>
-  <section class="w-full py-6 md:py-12 lg:py-16 bg-gray-100 dark:bg-gray-800">
+  <section class="w-full py-6 md:py-12 lg:py-16 rounded-lg bg-gray-100 dark:bg-gray-800">
     <div class="container px-4 md:px-6">
       <div
         class="flex flex-col items-center justify-center space-y-4 text-center"

@@ -4,7 +4,7 @@
       class="flex items-center justify-center mr-6"
       :to="ROUTES.HOME.path"
     >
-      <div class="flex items-center gap-3 hover:text-gray-800">
+      <div class="flex items-center gap-3 text-primary hover:text-[#6842de]">
         <ConvertIcon size="28" />
         <!-- <GithubIcon /> -->
         <!-- <Mountain class="h-6 w-6" /> -->
