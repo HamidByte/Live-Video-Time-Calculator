@@ -1,3 +1,5 @@
+import * as ROUTES from '@/router/routes.js'
+
 export const convertersList = [
   {
     title: 'Units',
@@ -17,8 +19,8 @@ export const convertersList = [
     title: 'Time',
     name: 'time',
     description: 'Convert time zones, durations, timestamps, and more.',
-    href: '/time',
-    isDisabled: true,
+    href: ROUTES.TIME.path,
+    isDisabled: false,
   },
   {
     title: 'Currency',
