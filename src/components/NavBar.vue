@@ -1,45 +1,37 @@
 <template>
   <header class="px-4 lg:px-6 h-16 flex items-center justify-between border-b">
-    <a
+    <RouterLink
       class="flex items-center justify-center mr-6"
-      href="https://github.com/"
-      target="_blank"
+      :to="ROUTES.HOME.path"
     >
-      <!-- <Github class="h-6 w-6" /> -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path
-          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S19.73.65 18 2.48A13.38 13.38 0 0 0 12 1a13.38 13.38 0 0 0-6 1.48C4.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77 5.44 5.44 0 0 0 2.5 8.5c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V22"
-        ></path>
-      </svg>
-    </a>
+      <div class="flex items-center gap-3 hover:text-gray-800">
+        <ConvertIcon size="28" />
+        <!-- <GithubIcon /> -->
+        <!-- <Mountain class="h-6 w-6" /> -->
+        <span class="font-bold text-lg">Convertica</span>
+      </div>
+    </RouterLink>
     <div>
-      <a
+      <RouterLink
         class="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-        href="/"
+        :to="ROUTES.HOME.path"
       >
         Home
-      </a>
-      <a
+      </RouterLink>
+      <RouterLink
         class="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-        href="/"
+        :to="ROUTES.ABOUT.path"
       >
-        Converters
-      </a>
+        About
+      </RouterLink>
     </div>
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-// import { Github } from 'lucide-vue-next'
+import * as ROUTES from '@/router/routes.js'
+import ConvertIcon from '@/components/icons/ConvertIcon.vue'
+// import GithubIcon from '@/components/icons/GithubIcon.vue'
+// import { Mountain } from 'lucide-vue-next'
 </script>

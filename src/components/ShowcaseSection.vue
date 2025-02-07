@@ -27,7 +27,13 @@ import { convertersList } from '@/lib/converters'
               </p>
             </div>
             <div class="card-footer text-center">
-              <button class="btn btn-primary" :href="converter.href">Go</button>
+              <component
+                :class="converter.isDisabled ? 'btn btn-primary btn-disabled' : 'btn btn-primary'"
+                :is="converter.isDisabled ? 'span' : 'router-link'"
+                :to="converter.href"
+                >
+                Go
+                </component>
             </div>
           </div>
         </div>
