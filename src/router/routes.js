@@ -11,4 +11,9 @@ export const LIVE_VIDEO_TIME = {
   name: 'live-video-time',
 }
 
+export const MISC = {
+  path: '/misc',
+  name: 'misc',
+}
+
 export const NOT_FOUND = { path: '/:pathMatch(.*)*', name: 'not_found' }

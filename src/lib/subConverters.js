@@ -291,23 +291,23 @@ export const subConverters = {
       isDisabled: true,
     },
   ],
-  miscellaneous: [
+  misc: [
     {
       title: 'Shoe Size Conversion',
       name: 'shoe-size',
-      href: '/miscellaneous/shoe-size',
+      href: '/misc/shoe-size',
       isDisabled: true,
     },
     {
       title: 'Cooking Measurements',
       name: 'cooking-measurements',
-      href: '/miscellaneous/cooking-measurements',
+      href: '/misc/cooking-measurements',
       isDisabled: true,
     },
     {
       title: 'Dice Roll Probability',
       name: 'dice-roll',
-      href: '/miscellaneous/dice-roll',
+      href: '/misc/dice-roll',
       isDisabled: true,
     },
   ],
