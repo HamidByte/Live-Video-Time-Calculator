@@ -16,4 +16,9 @@ export const MISC = {
   name: 'misc',
 }
 
+export const ASPECT_RATIO = {
+  path: '/misc/aspect-ratio',
+  name: 'aspect-ratio',
+}
+
 export const NOT_FOUND = { path: '/:pathMatch(.*)*', name: 'not_found' }

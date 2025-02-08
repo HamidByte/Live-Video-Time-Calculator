@@ -9,6 +9,7 @@ import LiveVideoTime from '@/components/time/LiveVideoTime.vue'
 
 // Miscellaneous
 import MiscView from '@/views/categories/MiscView.vue'
+import AspectRatioCalculator from '@/components/misc/AspectRatioCalculator.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,11 @@ const router = createRouter({
       path: ROUTES.MISC.path,
       name: ROUTES.MISC.name,
       component: MiscView,
+    },
+    {
+      path: ROUTES.ASPECT_RATIO.path,
+      name: ROUTES.ASPECT_RATIO.name,
+      component: AspectRatioCalculator,
     },
     {
       path: ROUTES.NOT_FOUND.path,

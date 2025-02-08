@@ -60,4 +60,4 @@ npm run lint
 - **Engineering:** Torque, power, viscosity, thermal conductivity
 - **Health & Fitness:** BMI calculator, calorie burn, steps to distance
 - **Geography:** GPS coordinates, latitude/longitude distance, country codes
-- **Miscellaneous:** Shoe size conversion, cooking measurements, dice roll probability
+- **Miscellaneous:** Aspect ratio calculator, Shoe size conversion, cooking measurements, dice roll probability

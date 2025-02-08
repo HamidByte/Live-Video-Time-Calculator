@@ -89,8 +89,8 @@ export const convertersList = [
     title: 'Miscellaneous',
     description:
       'Shoe size conversion, cooking measurements, dice roll probability.',
-    name: 'misc',
-    href: '/misc',
+    name: ROUTES.MISC.name,
+    href: ROUTES.MISC.path,
     isDisabled: false,
   },
 ]

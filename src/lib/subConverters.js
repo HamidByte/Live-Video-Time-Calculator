@@ -293,6 +293,12 @@ export const subConverters = {
   ],
   misc: [
     {
+      title: 'Aspect Ratio Calculator',
+      name: ROUTES.ASPECT_RATIO.name,
+      href: ROUTES.ASPECT_RATIO.path,
+      isDisabled: false,
+    },
+    {
       title: 'Shoe Size Conversion',
       name: 'shoe-size',
       href: '/misc/shoe-size',
