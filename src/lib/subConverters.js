@@ -1,3 +1,5 @@
+import * as ROUTES from '@/router/routes.js'
+
 export const subConverters = {
   units: [
     {
@@ -92,8 +94,8 @@ export const subConverters = {
     },
     {
       title: 'Live Video Time Calculator',
-      name: 'live-video-time',
-      href: '/time/live-video-time',
+      name: ROUTES.LIVE_VIDEO_TIME.name,
+      href: ROUTES.LIVE_VIDEO_TIME.path,
       isDisabled: false,
     },
     {

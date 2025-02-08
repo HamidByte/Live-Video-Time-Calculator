@@ -60,5 +60,3 @@ import { subConverters } from '@/lib/subConverters'
     </div>
   </section>
 </template>
-
-<style scoped></style>

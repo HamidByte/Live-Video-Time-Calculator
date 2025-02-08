@@ -3,7 +3,7 @@
     class="flex flex-col items-center justify-between gap-4 py-6 md:flex-row md:px-6"
   >
     <div class="flex items-center gap-2 text-gray-500">
-      <ConvertIcon customClass="text-gray-500" size="24" />
+      <ConvertIcon customClass="text-gray-500" :size="24" />
       <!-- <Mountain class="h-6 w-6" /> -->
       <span class="font-bold">Convertica</span>
     </div>

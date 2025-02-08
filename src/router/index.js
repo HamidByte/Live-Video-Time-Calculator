@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import * as ROUTES from '@/router/routes.js'
 import HomeView from '@/views/HomeView.vue'
-import Time from '@/views/time/Time.vue'
-import LiveVideoTime from '@/views/time/LiveVideoTime.vue'
+import TimeView from '@/views/categories/TimeView.vue'
+import LiveVideoTime from '@/components/time/LiveVideoTime.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
@@ -24,7 +24,7 @@ const router = createRouter({
     {
       path: ROUTES.TIME.path,
       name: ROUTES.TIME.name,
-      component: Time,
+      component: TimeView,
     },
     {
       path: ROUTES.LIVE_VIDEO_TIME.path,

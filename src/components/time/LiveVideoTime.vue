@@ -41,20 +41,27 @@ const formatTime = (minutes) => {
 </script>
 
 <template>
-  <section class="w-full py-6 md:py-12 lg:py-16 bg-gray-100 dark:bg-gray-800">
+  <section
+    class="flex-1 flex flex-col items-center justify-start text-center py-6 md:py-12 lg:py-16 bg-gray-100 dark:bg-gray-800"
+  >
     <div class="container px-4 md:px-6">
       <div
-        class="flex flex-col items-center justify-center space-y-4 text-center"
+        class="flex flex-col items-center space-y-6 text-center animate-moveUpInitial"
       >
-        <div class="card sm:max-w-md mx-auto">
+        <div class="space-y-2">
+          <h1 class="text-3xl font-bold mb-4">Live Video Time Calculator</h1>
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl">
+            Enter the total duration of the video and the reverse time shown
+            during the live stream.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col items-center justify-center space-y-4 text-center mt-8"
+      >
+        <div class="card w-1/2 mx-auto">
           <div class="card-body">
-            <h5 class="card-title mb-0">Live Video Time Calculator</h5>
-
-            <p class="mb-4">
-              Enter the total duration of the video and the reverse time shown
-              during the live stream.
-            </p>
-
             <div class="mb-4">
               <label for="totalDuration" class="block"
                 >Total Duration (HH:MM):</label
@@ -86,7 +93,7 @@ const formatTime = (minutes) => {
             </button>
           </div>
 
-          <div class="card-footer text-center mt-4">
+          <div v-if="result" class="card-footer text-center mt-4">
             <h2>
               Actual Time in Video: <span>{{ result }}</span>
             </h2>

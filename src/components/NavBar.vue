@@ -5,7 +5,7 @@
       :to="ROUTES.HOME.path"
     >
       <div class="flex items-center gap-3 text-primary hover:text-[#6842de]">
-        <ConvertIcon size="28" />
+        <ConvertIcon :size="28" />
         <!-- <GithubIcon /> -->
         <!-- <Mountain class="h-6 w-6" /> -->
         <span class="font-bold text-lg">Convertica</span>
