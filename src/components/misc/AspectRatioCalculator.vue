@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
+import { nearestNormalAspectRatio } from '@/lib/aspectRatio'
 import NumberInput from '@/components/ui/NumberInput.vue'
 
 const presets = [
@@ -30,11 +31,12 @@ const w2 = ref(0)
 const h2 = ref(0)
 const roundResults = ref(false)
 
-const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b))
-const aspectRatio = computed(() => {
-  const divisor = gcd(w1.value, h1.value)
-  return `${w1.value / divisor}:${h1.value / divisor}`
-})
+// const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b))
+// const aspectRatio = computed(() => {
+//   const divisor = gcd(w1.value, h1.value)
+//   return `${w1.value / divisor}:${h1.value / divisor}`
+// })
+const aspectRatio = computed(() => nearestNormalAspectRatio(w1.value, h1.value))
 
 watch(selectedRatio, (newVal) => {
   if (newVal) {
@@ -55,10 +57,8 @@ const calculateW2 = (newH2) => {
   return roundResults.value ? Math.round(result) : parseFloat(result.toFixed(2))
 }
 
-// // Watch w2 and h2 to update both values
+// Watch w2 and h2 to update both values
 watch([w2, h2], ([newW2, newH2], [oldW2, oldH2]) => {
-  console.log(`Old width 2: ${oldW2}\nNew width 2: ${newW2}`)
-
   if (newW2 !== oldW2) {
     h2.value = calculateH2(newW2)
   } else if (newH2 !== oldH2) {
