@@ -19,6 +19,10 @@ const decrement = () => {
 const increment = () => {
   emit('update:modelValue', props.modelValue + props.step)
 }
+
+const onInput = (value) => {
+  emit('update:modelValue', value)
+}
 </script>
 
 <template>
@@ -35,7 +39,7 @@ const increment = () => {
     </span>
     <input
       :value="modelValue"
-      @input="$emit('update:modelValue', Number($event.target.value))"
+      @input="onInput($event.target.value)"
       class="input pb-0.5 text-center"
       type="text"
       aria-label="seat counter"

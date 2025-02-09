@@ -1,8 +1,13 @@
 // Returns the simplified aspect ratio of given width and height.
-export function simpleAspectRatio(ratioWidth, ratioHeight) {
+export function simpleAspectRatio(width, height) {
+  const scale = 100 // Adjust this to increase precision
   const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b))
-  const divisor = gcd(ratioWidth, ratioHeight)
-  return `${ratioWidth / divisor}:${ratioHeight / divisor}`
+
+  const w = Math.round(width * scale)
+  const h = Math.round(height * scale)
+  const divisor = gcd(w, h)
+
+  return `${w / divisor}:${h / divisor}`
 }
 
 // Calculates the nearest normal aspect ratio based on given dimensions and maximum limits.

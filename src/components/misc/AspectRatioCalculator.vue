@@ -35,8 +35,8 @@ const ratioPresets = [
   { label: 'Square (1:1)', value: '1:1' },
   { label: 'Mobile Portrait (9:16)', value: '9:16' },
   { label: 'Panoramic (2:1)', value: '2:1' },
-  { label: 'IMAX (1.43:1)', value: '1.43:1' },
-  { label: 'Anamorphic (2.39:1)', value: '2.39:1' }
+  // { label: 'IMAX (1.43:1)', value: '1.43:1' },
+  // { label: 'Anamorphic (2.39:1)', value: '2.39:1' }
 ];
 const w = Number(ratioPresets[1].value.split(':')[0])
 const h = Number(ratioPresets[1].value.split(':')[1])
@@ -69,26 +69,35 @@ watch(selectedRatio, (newVal) => {
 
 const aspectRatio = computed(() => simpleAspectRatio(width.value, height.value))
 
+const convertToNumber = () => {
+  width.value = Number(width.value);
+  height.value = Number(height.value);
+  newWidth.value = Number(newWidth.value);
+  newHeight.value = Number(newHeight.value);
+}
+
 const updateDimensions = () => {
-    let calculatedHeight = (newWidth.value / width.value) * height.value;
-    newHeight.value = roundResults.value ? Math.round(calculatedHeight) : Number(calculatedHeight.toFixed(2));
+  convertToNumber();
+  let calculatedHeight = (newWidth.value / width.value) * height.value;
+  newHeight.value = roundResults.value ? Math.round(calculatedHeight) : Number(calculatedHeight.toFixed(2));
 }
 
 const updateWidth = () => {
+  convertToNumber();
   let calculatedWidth = (newHeight.value / height.value) * width.value;
   newWidth.value = roundResults.value ? Math.round(calculatedWidth) : Number(calculatedWidth.toFixed(2));
 }
 
-watch([width, height, newWidth], ([width, height], [oldWidth, oldHeight]) => {
-  updateDimensions();
+watch([width, height, newWidth], ([width, height, newW], [oldW, oldH]) => {
+  if (newW !== oldW) updateDimensions();
   // Set selectedRatio to 'custom' when width or height changes.
-  // if (width !== oldWidth || height !== oldHeight) {
+  // if (width !== oldW || height !== oldH) {
   //   selectedRatio.value = ratioPresets[0];
   // }
 });
 
-watch(newHeight, () => {
-  updateWidth();
+watch([newHeight], ([newH], [oldH]) => {
+  if (newH !== oldH) updateWidth();
 });
 
 const reset = () => {
