@@ -1,3 +1,11 @@
+// Returns the simplified aspect ratio of given width and height.
+export function simpleAspectRatio(ratioWidth, ratioHeight) {
+  const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b))
+  const divisor = gcd(ratioWidth, ratioHeight)
+  return `${ratioWidth / divisor}:${ratioHeight / divisor}`
+}
+
+// Calculates the nearest normal aspect ratio based on given dimensions and maximum limits.
 export function nearestNormalAspectRatio(width, height, side, maxW = 16, maxH = 16) {
   const ratio = (width * 100) / (height * 100);
   const ratiosW = new Array(maxW).fill(0);

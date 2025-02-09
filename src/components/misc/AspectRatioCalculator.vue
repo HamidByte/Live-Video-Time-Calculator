@@ -1,9 +1,9 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { nearestNormalAspectRatio } from '@/lib/aspectRatio'
+import { simpleAspectRatio } from '@/lib/aspectRatio'
 import NumberInput from '@/components/ui/NumberInput.vue'
 
-const presets = [
+const resPresets = [
   { label: '8K UHDTV (7680 x 4320)', width: 7680, height: 4320 },
   { label: '5K iMac Retina (5120 x 2880)', width: 5120, height: 2880 },
   { label: '4K UHDTV (3840 x 2160)', width: 3840, height: 2160 },
@@ -24,47 +24,81 @@ const presets = [
   { label: 'HVGA (320 x 480)', width: 320, height: 480 },
 ]
 
-const selectedRatio = ref(presets[5])
-const w1 = ref(presets[5].width)
-const h1 = ref(presets[5].height)
-const w2 = ref(0)
-const h2 = ref(0)
+const ratioPresets = [
+  { label: 'Custom', value: 'custom' },
+  { label: 'HD Video (16:9)', value: '16:9' },
+  { label: 'Standard Monitor (4:3)', value: '4:3' },
+  { label: 'Classic Film (3:2)', value: '3:2' },
+  { label: 'Cinemascope (21:9)', value: '21:9' },
+  { label: 'Ultrawide (32:9)', value: '32:9' },
+  { label: 'Widescreen (16:10)', value: '16:10' },
+  { label: 'Square (1:1)', value: '1:1' },
+  { label: 'Mobile Portrait (9:16)', value: '9:16' },
+  { label: 'Panoramic (2:1)', value: '2:1' },
+  { label: 'IMAX (1.43:1)', value: '1.43:1' },
+  { label: 'Anamorphic (2.39:1)', value: '2.39:1' }
+];
+const w = Number(ratioPresets[1].value.split(':')[0])
+const h = Number(ratioPresets[1].value.split(':')[1])
+
+const selectedRes = ref(resPresets[5])
+const selectedRatio = ref(ratioPresets[1])
+const width = ref(w)
+const height = ref(h)
+const newWidth = ref(0)
+const newHeight = ref(0)
 const roundResults = ref(false)
 
-// const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b))
-// const aspectRatio = computed(() => {
-//   const divisor = gcd(w1.value, h1.value)
-//   return `${w1.value / divisor}:${h1.value / divisor}`
-// })
-const aspectRatio = computed(() => nearestNormalAspectRatio(w1.value, h1.value))
+watch(selectedRes, (newVal) => {
+  if (newVal) {
+    width.value = newVal.width
+    height.value = newVal.height
+    newWidth.value = 0
+    newHeight.value = 0
+  }
+})
 
 watch(selectedRatio, (newVal) => {
   if (newVal) {
-    w1.value = newVal.width
-    h1.value = newVal.height
-    w2.value = 0
-    h2.value = 0
+    if (newVal.value !== 'custom') {
+      [width.value, height.value] = newVal.value.split(':').map(Number)
+      updateDimensions()
+    }
   }
 })
 
-const calculateH2 = (newW2) => {
-  let result = (h1.value / w1.value) * newW2
-  return roundResults.value ? Math.round(result) : parseFloat(result.toFixed(2))
+const aspectRatio = computed(() => simpleAspectRatio(width.value, height.value))
+
+const updateDimensions = () => {
+    let calculatedHeight = (newWidth.value / width.value) * height.value;
+    newHeight.value = roundResults.value ? Math.round(calculatedHeight) : Number(calculatedHeight.toFixed(2));
 }
 
-const calculateW2 = (newH2) => {
-  let result = (w1.value / h1.value) * newH2
-  return roundResults.value ? Math.round(result) : parseFloat(result.toFixed(2))
+const updateWidth = () => {
+  let calculatedWidth = (newHeight.value / height.value) * width.value;
+  newWidth.value = roundResults.value ? Math.round(calculatedWidth) : Number(calculatedWidth.toFixed(2));
 }
 
-// Watch w2 and h2 to update both values
-watch([w2, h2], ([newW2, newH2], [oldW2, oldH2]) => {
-  if (newW2 !== oldW2) {
-    h2.value = calculateH2(newW2)
-  } else if (newH2 !== oldH2) {
-    w2.value = calculateW2(newH2)
-  }
-})
+watch([width, height, newWidth], ([width, height], [oldWidth, oldHeight]) => {
+  updateDimensions();
+  // Set selectedRatio to 'custom' when width or height changes.
+  // if (width !== oldWidth || height !== oldHeight) {
+  //   selectedRatio.value = ratioPresets[0];
+  // }
+});
+
+watch(newHeight, () => {
+  updateWidth();
+});
+
+const reset = () => {
+  width.value = w
+  height.value = h
+  newWidth.value = 0
+  newWidth.value = 0
+  selectedRes.value = resPresets[5]
+  selectedRatio.value = ratioPresets[1]
+}
 </script>
 
 <template>
@@ -91,15 +125,32 @@ watch([w2, h2], ([newW2, newH2], [oldW2, oldH2]) => {
         <div class="card w-1/2 mx-auto">
           <div class="card-body">
             <div class="mb-4">
-              <label class="block mb-2">Select a preset (Common ratios):</label>
+              <label class="block mb-2"
+                >Select from common presets (resolutions):</label
+              >
+              <select
+                v-model="selectedRes"
+                class="select w-full appearance-none mb-4"
+                aria-label="select"
+              >
+                <option v-for="res in resPresets" :key="res.label" :value="res">
+                  {{ res.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="block mb-2"
+                >Select from common presets (ratios):</label
+              >
               <select
                 v-model="selectedRatio"
                 class="select w-full appearance-none mb-4"
                 aria-label="select"
               >
                 <option
-                  v-for="ratio in presets"
-                  :key="ratio.label"
+                  v-for="ratio in ratioPresets"
+                  :key="ratio.value"
                   :value="ratio"
                 >
                   {{ ratio.label }}
@@ -108,21 +159,33 @@ watch([w2, h2], ([newW2, newH2], [oldW2, oldH2]) => {
             </div>
 
             <div class="grid grid-cols-2 gap-4 mb-4">
-              <!-- W1 (Original Width) -->
-              <NumberInput v-model="w1" label="W1 (Original Width)" :step="1" />
-
-              <!-- H1 (Original Height) -->
               <NumberInput
-                v-model="h1"
-                label="H1 (Original Height)"
+                v-model.number="width"
+                label="Original Width"
                 :step="1"
+                @input="updateDimensions"
               />
 
-              <!-- W2 (New Width) -->
-              <NumberInput v-model="w2" label="W2 (New Width)" :step="1" />
+              <NumberInput
+                v-model.number="height"
+                label="Original Height"
+                :step="1"
+                @input="updateDimensions"
+              />
 
-              <!-- H2 (New Height) -->
-              <NumberInput v-model="h2" label="H2 (New Height)" :step="1" />
+              <NumberInput
+                v-model.number="newWidth"
+                label="New Width"
+                :step="1"
+                @input="updateDimensions"
+              />
+
+              <NumberInput
+                v-model.number="newHeight"
+                label="New Height"
+                :step="1"
+                @input="updateWidth"
+              />
             </div>
 
             <div class="flex items-center mb-4">
@@ -137,6 +200,16 @@ watch([w2, h2], ([newW2, newH2], [oldW2, oldH2]) => {
                   Round results to the nearest whole number
                 </label>
               </div>
+            </div>
+
+            <div class="flex items-center mx-auto mb-4">
+              <button
+                class="btn btn-primary"
+                aria-label="Reset button"
+                @click="reset"
+              >
+                Reset
+              </button>
             </div>
 
             <div class="p-3 bg-gray-100 rounded">
