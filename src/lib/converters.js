@@ -20,6 +20,7 @@ export const convertersList = [
     description: 'Convert time zones, durations, timestamps, and more.',
     name: ROUTES.TIME.name,
     href: ROUTES.TIME.path,
+    isNew: true,
     isDisabled: false,
   },
   {
@@ -91,6 +92,7 @@ export const convertersList = [
       'Aspect ratio calculator, Shoe size conversion, cooking measurements, dice roll probability',
     name: ROUTES.MISC.name,
     href: ROUTES.MISC.path,
+    isNew: true,
     isDisabled: false,
   },
 ]

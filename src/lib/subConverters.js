@@ -96,6 +96,7 @@ export const subConverters = {
       title: 'Live Video Time Calculator',
       name: ROUTES.LIVE_VIDEO_TIME.name,
       href: ROUTES.LIVE_VIDEO_TIME.path,
+      isNew: true,
       isDisabled: false,
     },
     {
@@ -296,6 +297,7 @@ export const subConverters = {
       title: 'Aspect Ratio Calculator',
       name: ROUTES.ASPECT_RATIO.name,
       href: ROUTES.ASPECT_RATIO.path,
+      isNew: true,
       isDisabled: false,
     },
     {
