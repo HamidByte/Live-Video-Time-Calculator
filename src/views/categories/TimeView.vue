@@ -31,6 +31,9 @@ import { subConverters } from '@/lib/subConverters'
             :key="index"
           >
             <div class="card-body">
+              <div class="flex flex-row justify-end gap-2">
+                <p v-if="converter.isNew" class="text-xs"><span class="badge badge-outline badge-secondary badge-xs ms-1 rounded-full">NEW</span></p>
+              </div>
               <h5 class="card-title mb-0">{{ converter.title }}</h5>
               <div class="text-base-content/50 mb-6">
                 {{ converter.description }}

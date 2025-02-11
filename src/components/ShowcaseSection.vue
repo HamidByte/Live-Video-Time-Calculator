@@ -16,7 +16,12 @@ import { convertersList } from '@/lib/converters'
             v-for="(converter, index) in convertersList"
           >
             <div class="card-body">
-              <h5 class="card-title mb-0">{{ converter.title }}</h5>
+              <div class="flex flex-row justify-end gap-2">
+                <p v-if="converter.isNew" class="text-xs"><span class="badge badge-outline badge-secondary badge-xs ms-1 rounded-full">NEW</span></p>
+              </div>
+              <h5 class="card-title mb-0">
+                {{ converter.title }}
+              </h5>
               <div class="text-base-content/50 mb-6">
                 {{ converter.description }}
               </div>
